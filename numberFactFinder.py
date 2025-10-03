@@ -33,3 +33,40 @@ def get_number_fact(number):
         return f"An unknown error occurred during the API request: {err}"
     except Exception as e:
         return f"An unexpected internal error occurred: {e}"
+    
+def main():
+    print("--- Number Fact Finder ---")
+
+    # Loop: The program runs continuously until the user quits
+    while True:
+        try:
+            # Input: Get input from the user
+            user_input = input("Enter a positive integer (or 'q' to quit): ")
+
+            if user_input.lower() == 'q':
+                print("Exiting application. Goodbye!")
+                break # Break out of the while loop to end the program
+
+            # Input and Validation: Convert the input to an integer
+            number = int(user_input)
+
+            if number < 0:
+                print("Please enter a positive integer.")
+                continue # Skip the rest of the loop and ask for input again
+
+            # Calling the Logic: Run the function that handles the API call
+            fact_result = get_number_fact(number)
+
+            # Output: Print the result clearly
+            print("-" * 40)
+            print(f"Fact for {number}:")
+            print(fact_result)
+            print("-" * 40)
+
+        except ValueError:
+            # Handles non-numeric input that wasn't 'q'
+            print("Invalid input. Please enter a whole number or 'q'.")
+        except KeyboardInterrupt:
+            # Allows user to exit gracefully with Ctrl+C
+            print("\nExiting application. Goodbye!")
+            sys.exit(0)

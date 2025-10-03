@@ -70,3 +70,15 @@ def main():
             # Allows user to exit gracefully with Ctrl+C
             print("\nExiting application. Goodbye!")
             sys.exit(0)
+
+if __name__ == "__main__":
+    # Check for Step 0 dependency (requests) before starting the main program
+    try:
+        import requests
+    except ImportError:
+        print("The 'requests' library is required.")
+        print("Please install it using: pip install requests")
+        sys.exit(1)
+
+    # Start the application loop
+    main()
